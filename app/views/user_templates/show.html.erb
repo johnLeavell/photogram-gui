@@ -1,0 +1,23 @@
+<h1>
+<%= @user.username  %>
+</h1>
+
+<dl>
+  <dt>ID</dt>
+
+  <dd><%= @user.id%></dd>
+  <dt>Edit user</dt>
+
+  <dd>
+    <form action="/update_user/">
+      <label for="username">Username
+      <input id="username" type="text" name="username" placeholder="Enter a username..." value="<%= @user.username %>">
+    </form>
+  </dd>
+  </dl>
+
+<h2>Own photos (own photo count goes here)</h2>
+
+<table border="1">
+
+</table>
