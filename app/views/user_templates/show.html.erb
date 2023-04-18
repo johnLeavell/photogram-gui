@@ -9,15 +9,60 @@
   <dt>Edit user</dt>
 
   <dd>
-    <form action="/update_user/">
-      <label for="username">Username
+    <form action="/update_user/<%= @user.id %>">
+      <label for="username">Username</label>
       <input id="username" type="text" name="username" placeholder="Enter a username..." value="<%= @user.username %>">
+          <button>Update user</button>
     </form>
   </dd>
   </dl>
 
-<h2>Own photos (own photo count goes here)</h2>
+<h2>Own photos (<%= @user.own_photos.count%>)</h2>
 
 <table border="1">
+  <tr>
+    <th>
+      Image
+    </th>
 
+    <th>
+      Owner
+    </th>
+
+    <th>
+      Caption
+    </th>
+
+    <th>
+      Posted
+    </th>
+
+    <th></th>
+  </tr>
+
+   <% @user.own_photos.each do |photo| %>
+  <tr>
+    <td>
+      <img src="<%= photo.image %>">
+    </td>
+
+    <td>
+      <%= photo.poster.username %>
+    </td>
+
+    <td>
+      <%= photo.caption %>
+    </td>
+
+    <td>
+      <%= photo.created_at %>
+    </td>
+    
+    <td>
+      <a href="/photos/<%= photo.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
 </table>

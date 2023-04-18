@@ -6,13 +6,14 @@ class UsersController < ApplicationController
     render({ template: "user_templates/index.html.erb" })
   end
 
-  def new
-    user_name = params.fetch("path_username")
-    matching_usernames = Userw.where({ username: "user_name"})
+  def create
+    user = User.new
 
-    @the_user = matching_usernames.first
+    user.username = params.fetch("input_username")
 
-    render({ template: "user_templates/new_user.html.erb" })
+    user.save
+
+    redirect_to("/users/#{user.username}")
   end
 
   def show
@@ -21,5 +22,15 @@ class UsersController < ApplicationController
     render({ template: "user_templates/show.html.erb" })
   end
 
+  def update
+    id = params.fetch("the_user_id")
+    user = User.where({ id: id }).at(0)
+  
+    user.username = params.fetch("username")
+      
+    user.save
+    redirect_to("/users/#{user.username}")
+  end
+  
 
 end
