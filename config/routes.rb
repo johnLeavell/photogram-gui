@@ -20,14 +20,18 @@ Rails.application.routes.draw do
   get("/photos", { controller: "photos",  action: "index" })
 
   ## create
-  get("/insert_photo_record", { :controller => "photos", :action => "create" })
+  get("/insert_photo_record", { controller: "photos", action: "create" })
 
   ## read
-  get("/photos/:the_photo_id", { :controller => "photos", :action => "show"})
+  get("/photos/:the_photo_id", { controller: "photos", action: "show"})
 
   ## update
-  get("/update_photo/:the_photo_id", { :controller => "photos", :action => "update" })
+  get("/update_photo/:the_photo_id", { controller: "photos", action: "update" })
 
   ## delete
-  get("/delete_photo/:the_photo_id", { :controller => "photos", :action => "destroy"})
+  get("/delete_photo/:the_photo_id", { controller: "photos", action: "destroy" })
+
+
+  ## comments
+  post("/insert_comment_record", { controller: "comments", action: "create" })
 end
